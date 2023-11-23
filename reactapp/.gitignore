@@ -1,0 +1,21 @@
+# Ignore Node.js modules and build artifacts
+node_modules/
+build/
+.cache/
+.npm/
+.yarn/
+yarn-error.log
+
+# Ignore development server files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.staging
+
+# Ignore IDE/Editor files
+.vscode/
+.idea/
+
+.vs/
