@@ -15,8 +15,8 @@
     <Folder Include="src\components\Header\" />
     <Folder Include="src\components\Footer\" />
     <Folder Include="src\components\Menu\" />
+    <Folder Include="src\components\Calendar\" />
     <Folder Include="src\utils\" />
     <Folder Include="src\services\" />
-    <Folder Include="src\pages\" />
   </ItemGroup>
 </Project>

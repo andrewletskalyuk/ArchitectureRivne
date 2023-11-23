@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Home from './pages/Home'; 
-
+import Home from './pages/Home';
+import Header from './components/Header/index';
 
 export default class App extends Component {
     static displayName = App.name;
@@ -8,6 +8,7 @@ export default class App extends Component {
     render() {
         return (
             <div>
+                <Header/>
                 <Home/>
             </div>
         );
