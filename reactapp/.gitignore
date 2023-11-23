@@ -18,5 +18,7 @@ yarn-error.log
 .vscode/
 .idea/
 
-.vs/
-.obj/
+# Build Folders
+**/[Bb]in/
+**/[Oo]bj/
+
