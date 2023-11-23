@@ -17,3 +17,5 @@ yarn-error.log
 # Ignore IDE/Editor files
 .vscode/
 .idea/
+
+.vs/
