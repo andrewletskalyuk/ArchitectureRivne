@@ -100,7 +100,10 @@ const Home = () => {
                             </Snackbar>
                         </div>
                     </li>
-                    <li>Aenean tincidunt elit at ipsum cursus, vitae interdum nulla suscipit.</li>
+                    <li>
+                        <p>Updare User in DB (PostgreSQL) with validation on UI side</p>
+                        
+                    </li>
                     <li>Curabitur in orci vel risus facilisis accumsan.</li>
                     <li>Morbi eleifend tortor lacinia sapien sagittis, quis pellentesque felis egestas.</li>
                     <li>Aenean viverra dui quis leo lacinia fringilla.</li>
