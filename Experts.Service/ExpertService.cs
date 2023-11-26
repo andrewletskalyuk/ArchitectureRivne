@@ -18,7 +18,7 @@ namespace Experts.Service
             var existingExpert = _context.Experts.FirstOrDefault(e => e.Email == expert.Email);
             if (existingExpert != null)
             {
-                throw new Exception("An expert with the same email already exists.");
+                return null;
             }
 
             _context.Experts.Add(expert);
@@ -51,7 +51,7 @@ namespace Experts.Service
                 throw new Exception("Expert not found.");
             }
 
-            existingExpert.Name = expert.Name;
+            existingExpert.Username = expert.Username;
             existingExpert.Email = expert.Email;
 
             _context.SaveChanges();

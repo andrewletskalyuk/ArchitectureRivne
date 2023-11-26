@@ -34,15 +34,12 @@ const Header = () => {
                         <MyCalendar />
                     </TreeItem>
                 </TreeItem>
-                <TreeItem nodeId="5" label="Controllers (Simple Actions without DB access)">
+                <TreeItem nodeId="5" label="Controllers (Only list without DB access and actions)">
                     <TreeItem nodeId="10" label="ItemController">
                         <TreeItem nodeId="11" label="CreateUser" />
                         <TreeItem nodeId="12" label="ReadUser" />
                         <TreeItem nodeId="13" label="UpdateUser" />
                         <TreeItem nodeId="14" label="DeleteUser" />
-                    </TreeItem>
-                    <TreeItem nodeId="6" label="MUI">
-                        <TreeItem nodeId="8" label="index.js" />
                     </TreeItem>
                 </TreeItem>
             </TreeView>

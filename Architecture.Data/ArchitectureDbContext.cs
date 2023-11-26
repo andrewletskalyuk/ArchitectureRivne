@@ -7,8 +7,8 @@ namespace Architecture.Data
     {
         public ArchitectureDbContext(DbContextOptions<ArchitectureDbContext> options) : base(options)
         {
-            //Database.EnsureCreated();
-            Database.Migrate();
+            Database.EnsureCreated();
+            //Database.Migrate();
         }
 
         public DbSet<Expert> Experts { get; set; }

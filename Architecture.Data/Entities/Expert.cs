@@ -8,7 +8,7 @@ namespace Architecture.Data.Entities
         public int Id { get; set; }
         
         [StringLength(100)]
-        public string Name { get; set; } = string.Empty;
+        public string Username { get; set; } = string.Empty;
 
         [Required]
         [EmailAddress]

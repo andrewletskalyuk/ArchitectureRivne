@@ -41,6 +41,10 @@ namespace webapi.Controllers
             try
             {
                 var createdExpert = _expertService.CreateExpert(expert);
+                if (createdExpert == null)
+                {
+                    return BadRequest(new { message = "An expert with the same email already exists." });
+                }
                 return CreatedAtAction("GetExpertByEmail", new { email = createdExpert.Email }, createdExpert);
             }
             catch (Exception ex)
