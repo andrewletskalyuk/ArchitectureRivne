@@ -5,6 +5,9 @@ import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import './HomeStyle.scss';
+import UpdateUserForm from '../services/UpdateUserForm';
+import DeleteUserForm from '../services/DeleteUserForm';
+import GetUserForm from '../services/GetUserForm';
 
 const Home = () => {
     const [username, setUsername] = useState('');
@@ -22,7 +25,7 @@ const Home = () => {
 
         const apiUrl = 'http://localhost:5056/api/experts';
         try {
-            // Perform the POST request to the server
+
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
@@ -31,28 +34,24 @@ const Home = () => {
                 body: JSON.stringify(expertData)
             });
 
-            // Check if the request was successful
             if (response.ok) {
                 const createdExpert = await response.json();
                 console.log('Expert created:', createdExpert);
                 setResponseMessage('User created successfully!');
                 setSeverity('success');
             } else {
-                // Handle errors if the server response wasn't ok
                 const errorData = await response.json();
                 console.error('Failed to create expert:', errorData);
                 setResponseMessage('Failed to create user: ' + errorData.message);
                 setSeverity('error');
             }
         } catch (error) {
-            // Handle network errors or other unexpected issues
             console.error('Error creating expert:', error);
             setResponseMessage('Error creating user: ' + error.message);
             setSeverity('error');
         }
         setOpenSnackbar(true);
 
-        // Reset fields
         setUsername('');
         setEmail('');
     };
@@ -69,6 +68,7 @@ const Home = () => {
             <main>
                 <ol className="gradient-list">
                     <li>
+                    {/*It's a one example*/}
                         <p>Create New User in DB (PostgreSQL) with validation on UI side</p>
                         <div className="home-container">
                             <Box component="form" onSubmit={handleCreateUser} sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -101,13 +101,18 @@ const Home = () => {
                         </div>
                     </li>
                     <li>
+                    {/*it's a second example how to use components*/}
                         <p>Updare User in DB (PostgreSQL) with validation on UI side</p>
-                        
+                        <UpdateUserForm />
                     </li>
-                    <li>Curabitur in orci vel risus facilisis accumsan.</li>
-                    <li>Morbi eleifend tortor lacinia sapien sagittis, quis pellentesque felis egestas.</li>
-                    <li>Aenean viverra dui quis leo lacinia fringilla.</li>
-                    <li>Sed varius lectus ac condimentum egestas.</li>
+                    <li>
+                        <p>Delete User by email in DB (PostgreSQL) with validation on UI side</p>
+                        <DeleteUserForm />
+                    </li>
+                    <li>
+                        <p>Get User by email in DB (PostgreSQL) with validation on UI side</p>
+                        <GetUserForm/>
+                    </li>
                 </ol>
             </main>
         </div>

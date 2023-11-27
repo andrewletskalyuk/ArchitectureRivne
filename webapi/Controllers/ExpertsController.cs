@@ -25,7 +25,7 @@ namespace webapi.Controllers
                 var expert = _expertService.GetExpertByEmail(email);
                 if (expert == null)
                 {
-                    return NotFound($"Expert with email {email} not found.");
+                    return NotFound(new { message = $"Expert with email {email} not found." });
                 }
                 return Ok(expert);
             }
@@ -54,11 +54,11 @@ namespace webapi.Controllers
         }
 
         [HttpPut("{email}")]
-        public IActionResult UpdateExpert(string email, [FromBody] Expert expert)
+        public IActionResult UpdateExpert([FromBody] UpdateUserData expert)
         {
             try
             {
-                var updatedExpert = _expertService.UpdateExpert(email, expert);
+                var updatedExpert = _expertService.UpdateExpert(expert);
                 return Ok(updatedExpert);
             }
             catch (Exception ex)
@@ -72,8 +72,7 @@ namespace webapi.Controllers
         {
             try
             {
-                _expertService.DeleteExpert(email);
-                return NoContent();
+                return Ok(new { message = _expertService.DeleteExpert(email) });
             }
             catch (Exception ex)
             {

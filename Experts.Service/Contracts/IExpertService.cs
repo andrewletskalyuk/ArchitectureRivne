@@ -1,9 +1,4 @@
 ﻿using Architecture.Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Experts.Service.Contracts
 {
@@ -29,13 +24,13 @@ namespace Experts.Service.Contracts
         /// <param name="email">The email address of the expert to update.</param>
         /// <param name="expert">The updated expert information.</param>
         /// <returns>The updated expert.</returns>
-        Expert UpdateExpert(string email, Expert expert);
+        Expert UpdateExpert(UpdateUserData expert);
 
         /// <summary>
         /// Deletes an expert by their email address.
         /// </summary>
         /// <param name="email">The email address of the expert to delete.</param>
-        void DeleteExpert(string email);
+        string DeleteExpert(string email);
 
     }
 }

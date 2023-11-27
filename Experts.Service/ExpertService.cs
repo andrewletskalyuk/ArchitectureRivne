@@ -20,22 +20,26 @@ namespace Experts.Service
             {
                 return null;
             }
-
-            _context.Experts.Add(expert);
+            var res = new Expert { 
+                Email = expert.Email.ToLower(),
+                Username = expert.Username.ToLower()
+            };
+            _context.Experts.Add(res);
             _context.SaveChanges();
             return expert;
         }
 
-        public void DeleteExpert(string email)
+        public string DeleteExpert(string email)
         {
             var existingExpert = _context.Experts.FirstOrDefault(e => e.Email == email);
             if (existingExpert == null)
             {
-                throw new Exception("Expert not found.");
+                return "Expert was not found";
             }
 
             _context.Experts.Remove(existingExpert);
             _context.SaveChanges();
+            return string.Concat($"User with email: {email} was deleted");
         }
 
         public Expert GetExpertByEmail(string email)
@@ -43,19 +47,27 @@ namespace Experts.Service
             return _context.Experts.FirstOrDefault(e => e.Email == email);
         }
 
-        public Expert UpdateExpert(string email, Expert expert)
+        public Expert UpdateExpert(UpdateUserData updateUser)
         {
-            var existingExpert = _context.Experts.FirstOrDefault(e => e.Email == email);
-            if (existingExpert == null)
+            var updateUserData = new UpdateUserData { 
+                NewEmail = updateUser.NewEmail.ToLower(),
+                NewUsername = updateUser.NewUsername.ToLower(),
+                OldEmail = updateUser.OldEmail.ToLower(),
+                OldUsername = updateUser.OldUsername.ToLower()
+            };
+            var existingExpert = _context.Experts.FirstOrDefault(e => e.Email == updateUserData.OldEmail && e.Username == updateUserData.OldUsername);
+
+            if (existingExpert == null || (updateUserData.OldUsername == updateUserData.NewUsername && updateUserData.OldEmail == updateUserData.NewEmail))
             {
-                throw new Exception("Expert not found.");
+                return null;
             }
 
-            existingExpert.Username = expert.Username;
-            existingExpert.Email = expert.Email;
+            existingExpert.Username = updateUserData.NewUsername;
+            existingExpert.Email = updateUserData.NewEmail;
 
             _context.SaveChanges();
             return existingExpert;
         }
+
     }
 }
